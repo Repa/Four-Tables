@@ -1,3 +1,0 @@
-hobo --source gems.github.com
-hobosupport
-hobofields --ignore-dependencies
