@@ -1,0 +1,131 @@
+<include src="rapid" plugin="hobo"/>
+
+<include src="taglibs/auto/rapid/cards"/>
+<include src="taglibs/auto/rapid/pages"/>
+<include src="taglibs/auto/rapid/forms"/>
+
+<set-theme name="clean"/>
+
+<def tag="app-name">Four Tables</def>
+
+
+<def tag="main-nav">
+  <navigation class="main-nav" merge-attrs param="default">
+    <nav-item href="#{base_url}/">Home</nav-item>
+        <nav-item with="&Recipe"><ht key="recipes.nav_item">Recipes</ht></nav-item>
+    <nav-item with="&Category"><ht key="categories.nav_item">Categories</ht></nav-item>
+    <nav-item with="&Country"><ht key="countries.nav_item">Countries</ht></nav-item>
+  </navigation>
+</def>
+
+<def tag="index-page" for="Recipe">
+  <page merge title="#{ht 'recipes.index.title', :default=>['Recipes'] }">
+    <body: class="index-page recipe" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="recipes.index.heading">
+            My Recipes
+          </ht>
+        </h2>
+
+        <p param="count" if>
+          <ht key="recipes.collection.count" count="&this.size">
+            There <count prefix="are"/>
+          </ht>
+        </p>
+      </header>
+
+      <section param="content-body">
+        <a action="new" to="&model" param="new-link">
+          <ht key="recipes.actions.new">New Recipe</ht>
+        </a>
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+<def tag="card" for="Recipe">
+  <card class="recipe" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      
+      <if:categories>Category:<view/></if> <else>There are no assigned categories yet.</else>
+    </body:>
+  </card>
+</def>
+
+<def tag="messagex"> <br/> <br/>
+<ul> <li param="msg1">Message 1</li> <li param="msg2">Message 2</li> <li param="msg3">Message 3</li>
+</ul> </def>
+<extend tag="messagex"> <old-messagex merge>
+<msg2: param>Message 2 Extended</msg2:> </old-messagex>
+</extend>
+
+<def tag="show-page" for="Recipe">
+  <page merge title="#{ht 'recipes.show.title', :default=>['Recipe'] }">
+
+    <body: class="show-page recipe" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:categories param="parent-link">&laquo; <ht key="recipes.actions.back" to="categories"><name/></ht></a:categories>
+            <h2 param="heading">
+              <ht key="recipes.show.heading" name="&this.respond_to?(:name) ? this.name : ''">
+                <name/>
+              </ht>
+            </h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">
+              <ht key="recipes.actions.edit" name="&this.respond_to?(:name) ? this.name : ''">
+                Edit Recipe
+              </ht>
+            </a>
+          </header>
+
+          <section param="content-body">
+            <!--<view:body param="description"/> -->
+            <field-list fields="country" param/> 
+            <section param="collection-section">
+              <h3 param="collection-heading">
+                <ht key="recipes.collection.heading.other" >
+                  Categories
+                </ht>
+              </h3>
+
+              <!--<collection:categories param/>-->
+            </section>
+          </section>
+    </content:>
+
+  </page>
+</def>
+
+<def tag="show-page-new">
+  <show-page merge>
+  <content-body:>
+    <h2>Title:</h2>
+    <view:title/><br/>
+    <h2>Recipe:</h2>
+    <view:body/>
+    <h2>Categories:</h2>
+    <view:categories/>
+    <h2>Country:</h2>
+    <view:country/>
+  </content-body:>
+  </show-page>
+</def>
+<show-page-new/>
