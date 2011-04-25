@@ -12417,3 +12417,50 @@ Rendering recipes/show
   [4;36;1mCategory Load (3.0ms)[0m   [0;1mSELECT "categories".* FROM "categories" INNER JOIN "category_assignments" ON "categories".id = "category_assignments".category_id WHERE (("category_assignments".recipe_id = 1)) [0m
   [4;35;1mCountry Load (1.7ms)[0m   [0mSELECT * FROM "countries" WHERE ("countries"."id" = 2) [0m
 Completed in 495ms (View: 473, DB: 11) | 200 OK [http://localhost/recipes/1-gateau]
+  [4;36;1mSQL (2.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to HoboMigration1 (20110420044415)
+Migrating to HoboMigration2 (20110420045048)
+Migrating to HoboMigration3 (20110420073215)
+Migrating to HoboMigration4 (20110420074911)
+Migrating to HoboMigration5 (20110420080813)
+Migrating to HoboMigration6 (20110420080945)
+Migrating to HoboMigration7 (20110420082245)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("categories")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("category_assignments")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_info('index_category_assignments_on_recipe_id')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_info('index_category_assignments_on_category_id')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("countries")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("recipes")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_info('index_recipes_on_country_id')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_info('index_users_on_state')[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
