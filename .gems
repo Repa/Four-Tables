@@ -1,1 +1,1 @@
-hobo -source gems.github.com
+hobo --source gems.github.com
